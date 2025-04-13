@@ -1,4 +1,5 @@
 import { type Metadata } from "next"
+import { Suspense } from "react"
 
 import { ResumeEditor } from "@/features/editor/components/resume-editor"
 
@@ -16,7 +17,9 @@ export default function EditorPage() {
           saved automatically.
         </p>
       </header>
-      <ResumeEditor />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ResumeEditor />
+      </Suspense>
     </div>
   )
 }
