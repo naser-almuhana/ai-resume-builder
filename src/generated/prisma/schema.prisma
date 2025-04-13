@@ -1,0 +1,35 @@
+generator client {
+  provider        = "prisma-client-js"
+  output          = "../src/generated/prisma"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Resume {
+  id     String @id @default(cuid())
+  userId String @map("user_id")
+
+  title       String?
+  description String?
+
+  photoUrl    String? @map("photo_url")
+  colorHex    String  @default("#000000") @map("color_hex")
+  borderStyle String  @default("squircle") @map("border_style")
+  summary     String?
+  firstName   String? @map("first_name")
+  lastName    String? @map("last_name")
+  jobTitle    String? @map("job_title")
+  city        String?
+  country     String?
+  phone       String?
+  email       String?
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("resumes")
+}

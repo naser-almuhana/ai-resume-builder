@@ -3,6 +3,7 @@ import { Inter } from "next/font/google"
 
 import "@/app/globals.css"
 import { Providers } from "@/providers"
+import { ClerkProvider } from "@clerk/nextjs"
 
 import { APP_DESCRIPTION, APP_NAME } from "@/constants"
 
@@ -22,10 +23,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Providers>{children}</Providers>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body className={inter.className}>
+          <Providers>{children}</Providers>
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }
