@@ -7,9 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write .",
+    "format": "prettier --write --ignore-path .prettierignore .",
     "db:generate": "npx prisma generate",
     "db:studio": "npx prisma studio",
+    "db:migrate:dev": "npx prisma migrate dev --name",
     "go": "npm run build && npm run start",
     "postinstall": "prisma generate"
   },

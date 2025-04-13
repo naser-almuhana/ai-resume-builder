@@ -139,7 +139,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "P:\\NextJS\\ai-resume-builder\\src\\generated\\prisma",
+      "value": "P:\\NextJS\\ai-resume-builder\\src\\lib\\_generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -160,26 +160,25 @@ const config = {
   },
   "relativeEnvPaths": {
     "rootEnvPath": null,
-    "schemaEnvPath": "../../../.env"
+    "schemaEnvPath": "../../../../.env"
   },
-  "relativePath": "../../../prisma",
+  "relativePath": "../../../../prisma",
   "clientVersion": "6.6.0",
   "engineVersion": "f676762280b54cd07c770017ed3711ddde35f37a",
   "datasourceNames": [
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": null
+        "value": "postgresql://ai-resume-builder-db_owner:npg_KEuoZh47TMAr@ep-mute-meadow-a2mhfodj-pooler.eu-central-1.aws.neon.tech/ai-resume-builder-db?sslmode=require"
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider        = \"prisma-client-js\"\n  output          = \"../src/generated/prisma\"\n  previewFeatures = [\"driverAdapters\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Resume {\n  id     String @id @default(cuid())\n  userId String @map(\"user_id\")\n\n  title       String?\n  description String?\n\n  photoUrl    String? @map(\"photo_url\")\n  colorHex    String  @default(\"#000000\") @map(\"color_hex\")\n  borderStyle String  @default(\"squircle\") @map(\"border_style\")\n  summary     String?\n  firstName   String? @map(\"first_name\")\n  lastName    String? @map(\"last_name\")\n  jobTitle    String? @map(\"job_title\")\n  city        String?\n  country     String?\n  phone       String?\n  email       String?\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  @@map(\"resumes\")\n}\n",
-  "inlineSchemaHash": "075c0cb71df32058ab4f55e2671d666dadfc294a6d9408c09f387d90bd5ef468",
+  "inlineSchema": "generator client {\n  provider        = \"prisma-client-js\"\n  output          = \"../src/lib/_generated/prisma\"\n  previewFeatures = [\"driverAdapters\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Resume {\n  id     String @id @default(cuid())\n  userId String @map(\"user_id\")\n\n  title       String?\n  description String?\n\n  photoUrl    String? @map(\"photo_url\")\n  colorHex    String  @default(\"#000000\") @map(\"color_hex\")\n  borderStyle String  @default(\"squircle\") @map(\"border_style\")\n  summary     String?\n  firstName   String? @map(\"first_name\")\n  lastName    String? @map(\"last_name\")\n  jobTitle    String? @map(\"job_title\")\n  city        String?\n  country     String?\n  phone       String?\n  email       String?\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  @@map(\"resumes\")\n}\n",
+  "inlineSchemaHash": "38f8ed35bc10fa5ba60ed00ac86ace131cb1d6cf282d944750a3dd1d9e3c6db3",
   "copyEngine": true
 }
 config.dirname = '/'

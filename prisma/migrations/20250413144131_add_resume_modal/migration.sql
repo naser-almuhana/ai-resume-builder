@@ -1,12 +1,12 @@
 -- CreateTable
 CREATE TABLE "resumes" (
     "id" TEXT NOT NULL,
-    "userId" TEXT NOT NULL DEFAULT 'user_id',
+    "user_id" TEXT NOT NULL,
     "title" TEXT,
     "description" TEXT,
-    "photoUrl" TEXT,
-    "colorHex" TEXT NOT NULL DEFAULT '#000000',
-    "borderStyle" TEXT NOT NULL DEFAULT 'squircle',
+    "photo_url" TEXT,
+    "color_hex" TEXT NOT NULL DEFAULT '#000000',
+    "border_style" TEXT NOT NULL DEFAULT 'squircle',
     "summary" TEXT,
     "first_name" TEXT,
     "last_name" TEXT,

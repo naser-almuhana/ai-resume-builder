@@ -1,0 +1,3 @@
+**/src/lib/_generated/**
+node_modules/**
+.next/**
