@@ -1,4 +1,4 @@
-import { Header } from "@/components/header"
+import { Navbar } from "@/components/navbar"
 
 export default function MainLayout({
   children,
@@ -7,7 +7,7 @@ export default function MainLayout({
 }>) {
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
+      <Navbar />
       {children}
     </div>
   )

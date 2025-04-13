@@ -5,7 +5,7 @@ import "@/app/globals.css"
 import { Providers } from "@/providers"
 import { ClerkProvider } from "@clerk/nextjs"
 
-import { APP_DESCRIPTION, APP_NAME } from "@/constants"
+import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from "@/constants"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     absolute: APP_NAME,
   },
   description: APP_DESCRIPTION,
+  metadataBase: new URL(SERVER_URL),
 }
 
 export default function RootLayout({

@@ -105,6 +105,30 @@ exports.Prisma.ResumeScalarFieldEnum = {
   country: 'country',
   phone: 'phone',
   email: 'email',
+  skills: 'skills',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.WorkExperienceScalarFieldEnum = {
+  id: 'id',
+  position: 'position',
+  company: 'company',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  description: 'description',
+  resumeId: 'resumeId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.EducationScalarFieldEnum = {
+  id: 'id',
+  degree: 'degree',
+  school: 'school',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  resumeId: 'resumeId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -126,7 +150,9 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  Resume: 'Resume'
+  Resume: 'Resume',
+  WorkExperience: 'WorkExperience',
+  Education: 'Education'
 };
 /**
  * Create the Client
@@ -177,13 +203,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider        = \"prisma-client-js\"\n  output          = \"../src/lib/_generated/prisma\"\n  previewFeatures = [\"driverAdapters\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Resume {\n  id     String @id @default(cuid())\n  userId String @map(\"user_id\")\n\n  title       String?\n  description String?\n\n  photoUrl    String? @map(\"photo_url\")\n  colorHex    String  @default(\"#000000\") @map(\"color_hex\")\n  borderStyle String  @default(\"squircle\") @map(\"border_style\")\n  summary     String?\n  firstName   String? @map(\"first_name\")\n  lastName    String? @map(\"last_name\")\n  jobTitle    String? @map(\"job_title\")\n  city        String?\n  country     String?\n  phone       String?\n  email       String?\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  @@map(\"resumes\")\n}\n",
-  "inlineSchemaHash": "38f8ed35bc10fa5ba60ed00ac86ace131cb1d6cf282d944750a3dd1d9e3c6db3",
+  "inlineSchema": "generator client {\n  provider        = \"prisma-client-js\"\n  output          = \"../src/lib/_generated/prisma\"\n  previewFeatures = [\"driverAdapters\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Resume {\n  id     String @id @default(cuid())\n  userId String @map(\"user_id\")\n\n  title       String?\n  description String?\n\n  photoUrl    String?  @map(\"photo_url\")\n  colorHex    String   @default(\"#000000\") @map(\"color_hex\")\n  borderStyle String   @default(\"squircle\") @map(\"border_style\")\n  summary     String?\n  firstName   String?  @map(\"first_name\")\n  lastName    String?  @map(\"last_name\")\n  jobTitle    String?  @map(\"job_title\")\n  city        String?\n  country     String?\n  phone       String?\n  email       String?\n  skills      String[]\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  WorkExperience WorkExperience[]\n  Education      Education[]\n\n  @@map(\"resumes\")\n}\n\nmodel WorkExperience {\n  id String @id @default(cuid())\n\n  position    String?\n  company     String?\n  startDate   DateTime? @map(\"start_date\")\n  endDate     DateTime? @map(\"end_date\")\n  description String?\n\n  resumeId String @map(\"resume_id\")\n  resume   Resume @relation(fields: [resumeId], references: [id], onDelete: Cascade)\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  @@map(\"work_experiences\")\n}\n\nmodel Education {\n  id String @id @default(cuid())\n\n  degree    String?\n  school    String?\n  startDate DateTime? @map(\"start_date\")\n  endDate   DateTime? @map(\"end_date\")\n\n  resumeId String @map(\"resume_id\")\n  resume   Resume @relation(fields: [resumeId], references: [id], onDelete: Cascade)\n\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"updated_at\")\n\n  @@map(\"educations\")\n}\n",
+  "inlineSchemaHash": "fbbf74e5009f41af0821c3e4d51ff79229508f0fd0c84ac53c059f62f72bfaab",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Resume\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"user_id\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"photoUrl\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"photo_url\"},{\"name\":\"colorHex\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"color_hex\"},{\"name\":\"borderStyle\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"border_style\"},{\"name\":\"summary\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"firstName\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"first_name\"},{\"name\":\"lastName\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"last_name\"},{\"name\":\"jobTitle\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"job_title\"},{\"name\":\"city\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"country\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"created_at\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"updated_at\"}],\"dbName\":\"resumes\"}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Resume\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"user_id\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"photoUrl\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"photo_url\"},{\"name\":\"colorHex\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"color_hex\"},{\"name\":\"borderStyle\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"border_style\"},{\"name\":\"summary\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"firstName\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"first_name\"},{\"name\":\"lastName\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"last_name\"},{\"name\":\"jobTitle\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"job_title\"},{\"name\":\"city\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"country\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"phone\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"skills\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"created_at\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"updated_at\"},{\"name\":\"WorkExperience\",\"kind\":\"object\",\"type\":\"WorkExperience\",\"relationName\":\"ResumeToWorkExperience\"},{\"name\":\"Education\",\"kind\":\"object\",\"type\":\"Education\",\"relationName\":\"EducationToResume\"}],\"dbName\":\"resumes\"},\"WorkExperience\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"position\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"company\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"startDate\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"start_date\"},{\"name\":\"endDate\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"end_date\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"resumeId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"resume_id\"},{\"name\":\"resume\",\"kind\":\"object\",\"type\":\"Resume\",\"relationName\":\"ResumeToWorkExperience\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"created_at\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"updated_at\"}],\"dbName\":\"work_experiences\"},\"Education\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"degree\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"school\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"startDate\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"start_date\"},{\"name\":\"endDate\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"end_date\"},{\"name\":\"resumeId\",\"kind\":\"scalar\",\"type\":\"String\",\"dbName\":\"resume_id\"},{\"name\":\"resume\",\"kind\":\"object\",\"type\":\"Resume\",\"relationName\":\"EducationToResume\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"created_at\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\",\"dbName\":\"updated_at\"}],\"dbName\":\"educations\"}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

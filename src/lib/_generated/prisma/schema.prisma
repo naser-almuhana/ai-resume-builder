@@ -16,20 +16,59 @@ model Resume {
   title       String?
   description String?
 
-  photoUrl    String? @map("photo_url")
-  colorHex    String  @default("#000000") @map("color_hex")
-  borderStyle String  @default("squircle") @map("border_style")
+  photoUrl    String?  @map("photo_url")
+  colorHex    String   @default("#000000") @map("color_hex")
+  borderStyle String   @default("squircle") @map("border_style")
   summary     String?
-  firstName   String? @map("first_name")
-  lastName    String? @map("last_name")
-  jobTitle    String? @map("job_title")
+  firstName   String?  @map("first_name")
+  lastName    String?  @map("last_name")
+  jobTitle    String?  @map("job_title")
   city        String?
   country     String?
   phone       String?
   email       String?
+  skills      String[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
+  WorkExperience WorkExperience[]
+  Education      Education[]
+
   @@map("resumes")
+}
+
+model WorkExperience {
+  id String @id @default(cuid())
+
+  position    String?
+  company     String?
+  startDate   DateTime? @map("start_date")
+  endDate     DateTime? @map("end_date")
+  description String?
+
+  resumeId String @map("resume_id")
+  resume   Resume @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("work_experiences")
+}
+
+model Education {
+  id String @id @default(cuid())
+
+  degree    String?
+  school    String?
+  startDate DateTime? @map("start_date")
+  endDate   DateTime? @map("end_date")
+
+  resumeId String @map("resume_id")
+  resume   Resume @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("educations")
 }
