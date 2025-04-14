@@ -3,7 +3,7 @@ import type { ResumeSectionProps } from "@/lib/types"
 import { Separator } from "@/components/ui/separator"
 
 export function SummarySection({ resumeData }: ResumeSectionProps) {
-  const { summary } = resumeData
+  const { summary, colorHex } = resumeData
 
   if (!summary) return null
 
@@ -11,16 +11,16 @@ export function SummarySection({ resumeData }: ResumeSectionProps) {
     <>
       <Separator
         className="border-2"
-        // style={{
-        //   borderColor: colorHex,
-        // }}
+        style={{
+          borderColor: colorHex,
+        }}
       />
       <div className="break-inside-avoid space-y-3">
         <p
           className="text-lg font-semibold"
-          //   style={{
-          //     color: colorHex,
-          //   }}
+          style={{
+            color: colorHex,
+          }}
         >
           Professional profile
         </p>

@@ -1,5 +1,7 @@
 import { z } from "zod"
 
+import { optionalString } from "@/lib/validation"
+
 import { educationSchema } from "@/features/editor/schemas/education.schema"
 import { generalInfoSchema } from "@/features/editor/schemas/general-info.schema"
 import { personalInfoSchema } from "@/features/editor/schemas/personal-info.schema"
@@ -14,6 +16,8 @@ export const resumeSchema = z.object({
   ...educationSchema.shape,
   ...skillsSchema.shape,
   ...summarySchema.shape,
+  colorHex: optionalString,
+  borderStyle: optionalString,
 })
 
 export type ResumeValues = Omit<z.infer<typeof resumeSchema>, "photo"> & {

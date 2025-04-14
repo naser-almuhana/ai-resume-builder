@@ -4,3 +4,9 @@ export const APP_DESCRIPTION =
   "AI Resume Builder is the easiest way to create a professional resume that will help you land your dream job."
 export const SERVER_URL =
   process.env.NEXT_PUBLIC_SERVER_URL || "http://localhost:3000"
+
+export const BORDER_STYLES = {
+  SQUARE: "square",
+  CIRCLE: "circle",
+  SQUIRCLE: "squircle",
+}

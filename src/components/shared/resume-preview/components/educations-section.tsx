@@ -5,7 +5,7 @@ import { ResumeSectionProps } from "@/lib/types"
 import { Separator } from "@/components/ui/separator"
 
 export function EducationSection({ resumeData }: ResumeSectionProps) {
-  const { educations } = resumeData
+  const { educations, colorHex } = resumeData
 
   const educationsNotEmpty = educations?.filter(
     (edu) => Object.values(edu).filter(Boolean).length > 0,
@@ -15,18 +15,18 @@ export function EducationSection({ resumeData }: ResumeSectionProps) {
 
   return (
     <>
-      <hr
+      <Separator
         className="border-2"
-        // style={{
-        //   borderColor: colorHex,
-        // }}
+        style={{
+          borderColor: colorHex,
+        }}
       />
       <div className="space-y-3">
         <p
           className="text-lg font-semibold"
-          // style={{
-          //   color: colorHex,
-          // }}
+          style={{
+            color: colorHex,
+          }}
         >
           Education
         </p>
@@ -34,9 +34,9 @@ export function EducationSection({ resumeData }: ResumeSectionProps) {
           <div key={index} className="break-inside-avoid space-y-1">
             <div
               className="flex items-center justify-between text-sm font-semibold"
-              // style={{
-              //   color: colorHex,
-              // }}
+              style={{
+                color: colorHex,
+              }}
             >
               <span>{edu.degree}</span>
               {edu.startDate && (
