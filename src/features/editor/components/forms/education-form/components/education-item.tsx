@@ -1,3 +1,7 @@
+"use client"
+
+import { useSortable } from "@dnd-kit/sortable"
+import { CSS } from "@dnd-kit/utilities"
 import { GripHorizontalIcon } from "lucide-react"
 import { UseFormReturn } from "react-hook-form"
 
@@ -6,14 +10,12 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 
 import { type EducationValues } from "@/features/editor/schemas/education.schema"
 
@@ -25,11 +27,38 @@ interface EducationItemProps {
 }
 
 export function EducationItem({ id, form, index, remove }: EducationItemProps) {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id })
+
   return (
-    <div className={cn("bg-background space-y-3 rounded-md border p-3")}>
+    <div
+      className={cn(
+        "bg-background space-y-3 rounded-md border p-3",
+        isDragging && "relative z-50 cursor-grabbing shadow-xl",
+      )}
+      ref={setNodeRef}
+      style={{
+        transform: CSS.Transform.toString(transform),
+        transition,
+        touchAction: "none",
+      }}
+    >
       <div className="flex justify-between gap-2">
         <span className="font-semibold">Education {index + 1}</span>
-        <GripHorizontalIcon className="text-muted-foreground size-5 cursor-grab focus:outline-none" />
+        <GripHorizontalIcon
+          className={cn(
+            "text-muted-foreground size-5 cursor-grab focus:outline-none",
+            isDragging && "cursor-grabbing",
+          )}
+          {...attributes}
+          {...listeners}
+        />
       </div>
 
       <FormField
