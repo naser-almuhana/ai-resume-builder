@@ -13,7 +13,7 @@ export function Logo() {
         height={35}
         className="rounded-full"
       />
-      <span className="text-base font-bold tracking-tight md:block md:text-lg">
+      <span className="hidden text-base font-bold tracking-tight sm:block md:text-lg">
         AI Resume Builder
       </span>
     </Link>
