@@ -1,6 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 
+import { ResumeFormProps } from "@/lib/types"
+
 import {
   Form,
   FormControl,
@@ -18,13 +20,12 @@ import {
   SKILLS_FORM_TITLE,
 } from "@/features/editor/constants"
 import { useDebouncedForm } from "@/features/editor/hooks/use-debounced-form"
-import { EditorFormProps } from "@/features/editor/lib/types"
 import {
   SkillsValues,
   skillsSchema,
 } from "@/features/editor/schemas/skills.schema"
 
-export function SkillsForm({ resumeData, setResumeData }: EditorFormProps) {
+export function SkillsForm({ resumeData, setResumeData }: ResumeFormProps) {
   const form = useForm<SkillsValues>({
     resolver: zodResolver(skillsSchema),
     defaultValues: {

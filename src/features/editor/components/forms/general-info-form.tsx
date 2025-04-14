@@ -3,6 +3,8 @@ import { useEffect, useRef } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 
+import { type ResumeFormProps } from "@/lib/types"
+
 import {
   Form,
   FormControl,
@@ -20,7 +22,6 @@ import {
   GENERAL_INFO_FORM_TITLE,
 } from "@/features/editor/constants"
 import { useDebouncedForm } from "@/features/editor/hooks/use-debounced-form"
-import { type EditorFormProps } from "@/features/editor/lib/types"
 import {
   type GeneralInfoValues,
   generalInfoSchema,
@@ -29,7 +30,7 @@ import {
 export function GeneralInfoForm({
   resumeData,
   setResumeData,
-}: EditorFormProps) {
+}: ResumeFormProps) {
   const form = useForm<GeneralInfoValues>({
     resolver: zodResolver(generalInfoSchema),
     defaultValues: {

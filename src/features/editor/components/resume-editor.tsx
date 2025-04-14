@@ -3,12 +3,14 @@
 import { useSearchParams } from "next/navigation"
 import { useState } from "react"
 
+import { type ResumeValues } from "@/schemas/resume-values.schema"
+
 import { Separator } from "@/components/ui/separator"
 
 import { Breadcrumbs } from "@/features/editor/components/breadcrumbs"
 import { Footer } from "@/features/editor/components/footer"
+import { ResumePreviewSection } from "@/features/editor/components/resume-preview-section"
 import { steps } from "@/features/editor/lib/steps"
-import { type ResumeValues } from "@/features/editor/schemas/resume-values.schema"
 
 export function ResumeEditor() {
   const searchParams = useSearchParams()
@@ -40,10 +42,12 @@ export function ResumeEditor() {
               />
             )}
           </div>
-          <Separator orientation="vertical" className="mr-2 max-md:hidden" />
-          <div className="hidden w-1/2 md:flex">
-            {JSON.stringify(resumeData, null, 2)}
-          </div>
+          <Separator orientation="vertical" className="max-md:hidden" />
+          <ResumePreviewSection
+            resumeData={resumeData}
+            setResumeData={setResumeData}
+            // className={cn(showSmResumePreview && "flex")}
+          />
         </div>
       </main>
       <Footer currentStep={currentStep} setCurrentStep={setStep} />

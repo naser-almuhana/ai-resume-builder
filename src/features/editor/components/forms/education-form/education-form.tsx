@@ -1,6 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useFieldArray, useForm } from "react-hook-form"
 
+import { ResumeFormProps } from "@/lib/types"
+
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 
@@ -10,7 +12,6 @@ import {
   EDUCATION_FORM_TITLE,
 } from "@/features/editor/constants"
 import { useDebouncedForm } from "@/features/editor/hooks/use-debounced-form"
-import { EditorFormProps } from "@/features/editor/lib/types"
 import {
   EducationValues,
   educationSchema,
@@ -18,7 +19,7 @@ import {
 
 import { EducationItem } from "./components/education-item"
 
-export function EducationForm({ resumeData, setResumeData }: EditorFormProps) {
+export function EducationForm({ resumeData, setResumeData }: ResumeFormProps) {
   const form = useForm<EducationValues>({
     resolver: zodResolver(educationSchema),
     defaultValues: {

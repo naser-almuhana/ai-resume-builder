@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react"
 
 import { FieldValues, UseFormReturn } from "react-hook-form"
 
-import { EditorFormProps } from "../lib/types"
+import { ResumeFormProps } from "../../../lib/types"
 
 interface useDebouncedFormOptions<T extends FieldValues> {
   form: UseFormReturn<T>

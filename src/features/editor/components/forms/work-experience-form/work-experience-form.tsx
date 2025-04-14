@@ -1,6 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useFieldArray, useForm } from "react-hook-form"
 
+import { ResumeFormProps } from "@/lib/types"
+
 import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 
@@ -10,7 +12,6 @@ import {
   WORK_EXPERIENCE_FORM_TITLE,
 } from "@/features/editor/constants"
 import { useDebouncedForm } from "@/features/editor/hooks/use-debounced-form"
-import { EditorFormProps } from "@/features/editor/lib/types"
 import {
   WorkExperienceValues,
   workExperienceSchema,
@@ -21,7 +22,7 @@ import { WorkExperienceItem } from "./components/work-experience-item"
 export function WorkExperienceForm({
   resumeData,
   setResumeData,
-}: EditorFormProps) {
+}: ResumeFormProps) {
   const form = useForm<WorkExperienceValues>({
     resolver: zodResolver(workExperienceSchema),
     defaultValues: {

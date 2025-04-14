@@ -1,6 +1,8 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 
+import { ResumeFormProps } from "@/lib/types"
+
 import {
   Form,
   FormControl,
@@ -17,13 +19,12 @@ import {
   SUMMARY_FORM_TITLE,
 } from "@/features/editor/constants"
 import { useDebouncedForm } from "@/features/editor/hooks/use-debounced-form"
-import { EditorFormProps } from "@/features/editor/lib/types"
 import {
   SummaryValues,
   summarySchema,
 } from "@/features/editor/schemas/summary.schema"
 
-export function SummaryForm({ resumeData, setResumeData }: EditorFormProps) {
+export function SummaryForm({ resumeData, setResumeData }: ResumeFormProps) {
   const form = useForm<SummaryValues>({
     resolver: zodResolver(summarySchema),
     defaultValues: {
