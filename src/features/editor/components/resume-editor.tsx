@@ -5,20 +5,33 @@ import { useState } from "react"
 
 import { type ResumeValues } from "@/schemas/resume-values.schema"
 
-import { cn } from "@/lib/utils"
+import { ResumeServerData } from "@/lib/types"
+import { cn, mapToResumeValues } from "@/lib/utils"
+
+import { useUnloadWarning } from "@/hooks/use-unload-warning"
 
 import { Separator } from "@/components/ui/separator"
 
 import { Breadcrumbs } from "@/features/editor/components/breadcrumbs"
 import { Footer } from "@/features/editor/components/footer"
 import { ResumePreviewSection } from "@/features/editor/components/resume-preview-section"
+import { UseAutoSaveResume } from "@/features/editor/hooks/use-auto-save-resume"
 import { steps } from "@/features/editor/lib/steps"
 
-export function ResumeEditor() {
+interface ResumeEditorProps {
+  resumeToEdit: ResumeServerData | null
+}
+
+export function ResumeEditor({ resumeToEdit }: ResumeEditorProps) {
   const searchParams = useSearchParams()
 
-  const [resumeData, setResumeData] = useState<ResumeValues>({})
+  const [resumeData, setResumeData] = useState<ResumeValues>(
+    resumeToEdit ? mapToResumeValues(resumeToEdit) : {},
+  )
   const [showSmResumePreview, setShowSmResumePreview] = useState(false)
+
+  const { isSaving, hasUnsavedChanges } = UseAutoSaveResume(resumeData)
+  useUnloadWarning(hasUnsavedChanges)
 
   const currentStep = searchParams.get("step") || steps[0].key
   const setStep = (key: string) => {
@@ -63,6 +76,7 @@ export function ResumeEditor() {
         setCurrentStep={setStep}
         showSmResumePreview={showSmResumePreview}
         setShowSmResumePreview={setShowSmResumePreview}
+        isSaving={isSaving}
       />
     </>
   )

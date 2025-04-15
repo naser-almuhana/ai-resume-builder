@@ -38,7 +38,7 @@ export function ResumePreview({
       <div
         className={cn("space-y-6 p-6", !width && "invisible")}
         style={{
-          zoom: (1 / 794) * width, // 794 number of pixels in 210 millimeter used above
+          zoom: (1 / 794) * width, // Dynamically scale content to match A4 width (794px = 210mm) based on container width
         }}
         ref={contentRef}
         id="resumePreviewContent"

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useRef } from "react"
 
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -63,6 +63,7 @@ export function PersonalInfoForm({
           <FormField
             control={form.control}
             name="photo"
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             render={({ field: { value, ...fieldValues } }) => (
               <FormItem>
                 <FormLabel>Your photo</FormLabel>

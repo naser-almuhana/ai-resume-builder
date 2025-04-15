@@ -15,6 +15,7 @@ interface FooterProps {
   setCurrentStep: (step: string) => void
   showSmResumePreview: boolean
   setShowSmResumePreview: (show: boolean) => void
+  isSaving: boolean
 }
 
 export function Footer({
@@ -22,6 +23,7 @@ export function Footer({
   setCurrentStep,
   showSmResumePreview,
   setShowSmResumePreview,
+  isSaving,
 }: FooterProps) {
   const previousStep = steps.find(
     (_, index) => steps[index + 1]?.key === currentStep,
@@ -71,7 +73,7 @@ export function Footer({
           <p
             className={cn(
               "text-muted-foreground opacity-0",
-              // isSaving && "opacity-100",
+              isSaving && "opacity-100",
             )}
           >
             Saving...

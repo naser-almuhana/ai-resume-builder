@@ -1055,13 +1055,13 @@ export namespace Prisma {
    */
 
   export type ResumeCountOutputType = {
-    WorkExperience: number
-    Education: number
+    workExperiences: number
+    educations: number
   }
 
   export type ResumeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    WorkExperience?: boolean | ResumeCountOutputTypeCountWorkExperienceArgs
-    Education?: boolean | ResumeCountOutputTypeCountEducationArgs
+    workExperiences?: boolean | ResumeCountOutputTypeCountWorkExperiencesArgs
+    educations?: boolean | ResumeCountOutputTypeCountEducationsArgs
   }
 
   // Custom InputTypes
@@ -1078,14 +1078,14 @@ export namespace Prisma {
   /**
    * ResumeCountOutputType without action
    */
-  export type ResumeCountOutputTypeCountWorkExperienceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResumeCountOutputTypeCountWorkExperiencesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: WorkExperienceWhereInput
   }
 
   /**
    * ResumeCountOutputType without action
    */
-  export type ResumeCountOutputTypeCountEducationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ResumeCountOutputTypeCountEducationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EducationWhereInput
   }
 
@@ -1358,8 +1358,8 @@ export namespace Prisma {
     skills?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    WorkExperience?: boolean | Resume$WorkExperienceArgs<ExtArgs>
-    Education?: boolean | Resume$EducationArgs<ExtArgs>
+    workExperiences?: boolean | Resume$workExperiencesArgs<ExtArgs>
+    educations?: boolean | Resume$educationsArgs<ExtArgs>
     _count?: boolean | ResumeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["resume"]>
 
@@ -1428,8 +1428,8 @@ export namespace Prisma {
 
   export type ResumeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "title" | "description" | "photoUrl" | "colorHex" | "borderStyle" | "summary" | "firstName" | "lastName" | "jobTitle" | "city" | "country" | "phone" | "email" | "skills" | "createdAt" | "updatedAt", ExtArgs["result"]["resume"]>
   export type ResumeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    WorkExperience?: boolean | Resume$WorkExperienceArgs<ExtArgs>
-    Education?: boolean | Resume$EducationArgs<ExtArgs>
+    workExperiences?: boolean | Resume$workExperiencesArgs<ExtArgs>
+    educations?: boolean | Resume$educationsArgs<ExtArgs>
     _count?: boolean | ResumeCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ResumeIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1438,8 +1438,8 @@ export namespace Prisma {
   export type $ResumePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Resume"
     objects: {
-      WorkExperience: Prisma.$WorkExperiencePayload<ExtArgs>[]
-      Education: Prisma.$EducationPayload<ExtArgs>[]
+      workExperiences: Prisma.$WorkExperiencePayload<ExtArgs>[]
+      educations: Prisma.$EducationPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1854,8 +1854,8 @@ export namespace Prisma {
    */
   export interface Prisma__ResumeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    WorkExperience<T extends Resume$WorkExperienceArgs<ExtArgs> = {}>(args?: Subset<T, Resume$WorkExperienceArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkExperiencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    Education<T extends Resume$EducationArgs<ExtArgs> = {}>(args?: Subset<T, Resume$EducationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EducationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    workExperiences<T extends Resume$workExperiencesArgs<ExtArgs> = {}>(args?: Subset<T, Resume$workExperiencesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WorkExperiencePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    educations<T extends Resume$educationsArgs<ExtArgs> = {}>(args?: Subset<T, Resume$educationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EducationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2291,9 +2291,9 @@ export namespace Prisma {
   }
 
   /**
-   * Resume.WorkExperience
+   * Resume.workExperiences
    */
-  export type Resume$WorkExperienceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Resume$workExperiencesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the WorkExperience
      */
@@ -2315,9 +2315,9 @@ export namespace Prisma {
   }
 
   /**
-   * Resume.Education
+   * Resume.educations
    */
-  export type Resume$EducationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Resume$educationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Education
      */
@@ -4727,8 +4727,8 @@ export namespace Prisma {
     skills?: StringNullableListFilter<"Resume">
     createdAt?: DateTimeFilter<"Resume"> | Date | string
     updatedAt?: DateTimeFilter<"Resume"> | Date | string
-    WorkExperience?: WorkExperienceListRelationFilter
-    Education?: EducationListRelationFilter
+    workExperiences?: WorkExperienceListRelationFilter
+    educations?: EducationListRelationFilter
   }
 
   export type ResumeOrderByWithRelationInput = {
@@ -4750,8 +4750,8 @@ export namespace Prisma {
     skills?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    WorkExperience?: WorkExperienceOrderByRelationAggregateInput
-    Education?: EducationOrderByRelationAggregateInput
+    workExperiences?: WorkExperienceOrderByRelationAggregateInput
+    educations?: EducationOrderByRelationAggregateInput
   }
 
   export type ResumeWhereUniqueInput = Prisma.AtLeast<{
@@ -4776,8 +4776,8 @@ export namespace Prisma {
     skills?: StringNullableListFilter<"Resume">
     createdAt?: DateTimeFilter<"Resume"> | Date | string
     updatedAt?: DateTimeFilter<"Resume"> | Date | string
-    WorkExperience?: WorkExperienceListRelationFilter
-    Education?: EducationListRelationFilter
+    workExperiences?: WorkExperienceListRelationFilter
+    educations?: EducationListRelationFilter
   }, "id">
 
   export type ResumeOrderByWithAggregationInput = {
@@ -4992,8 +4992,8 @@ export namespace Prisma {
     skills?: ResumeCreateskillsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    WorkExperience?: WorkExperienceCreateNestedManyWithoutResumeInput
-    Education?: EducationCreateNestedManyWithoutResumeInput
+    workExperiences?: WorkExperienceCreateNestedManyWithoutResumeInput
+    educations?: EducationCreateNestedManyWithoutResumeInput
   }
 
   export type ResumeUncheckedCreateInput = {
@@ -5015,8 +5015,8 @@ export namespace Prisma {
     skills?: ResumeCreateskillsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    WorkExperience?: WorkExperienceUncheckedCreateNestedManyWithoutResumeInput
-    Education?: EducationUncheckedCreateNestedManyWithoutResumeInput
+    workExperiences?: WorkExperienceUncheckedCreateNestedManyWithoutResumeInput
+    educations?: EducationUncheckedCreateNestedManyWithoutResumeInput
   }
 
   export type ResumeUpdateInput = {
@@ -5038,8 +5038,8 @@ export namespace Prisma {
     skills?: ResumeUpdateskillsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    WorkExperience?: WorkExperienceUpdateManyWithoutResumeNestedInput
-    Education?: EducationUpdateManyWithoutResumeNestedInput
+    workExperiences?: WorkExperienceUpdateManyWithoutResumeNestedInput
+    educations?: EducationUpdateManyWithoutResumeNestedInput
   }
 
   export type ResumeUncheckedUpdateInput = {
@@ -5061,8 +5061,8 @@ export namespace Prisma {
     skills?: ResumeUpdateskillsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    WorkExperience?: WorkExperienceUncheckedUpdateManyWithoutResumeNestedInput
-    Education?: EducationUncheckedUpdateManyWithoutResumeNestedInput
+    workExperiences?: WorkExperienceUncheckedUpdateManyWithoutResumeNestedInput
+    educations?: EducationUncheckedUpdateManyWithoutResumeNestedInput
   }
 
   export type ResumeCreateManyInput = {
@@ -5137,7 +5137,7 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    resume: ResumeCreateNestedOneWithoutWorkExperienceInput
+    resume: ResumeCreateNestedOneWithoutWorkExperiencesInput
   }
 
   export type WorkExperienceUncheckedCreateInput = {
@@ -5161,7 +5161,7 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    resume?: ResumeUpdateOneRequiredWithoutWorkExperienceNestedInput
+    resume?: ResumeUpdateOneRequiredWithoutWorkExperiencesNestedInput
   }
 
   export type WorkExperienceUncheckedUpdateInput = {
@@ -5219,7 +5219,7 @@ export namespace Prisma {
     endDate?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    resume: ResumeCreateNestedOneWithoutEducationInput
+    resume: ResumeCreateNestedOneWithoutEducationsInput
   }
 
   export type EducationUncheckedCreateInput = {
@@ -5241,7 +5241,7 @@ export namespace Prisma {
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    resume?: ResumeUpdateOneRequiredWithoutEducationNestedInput
+    resume?: ResumeUpdateOneRequiredWithoutEducationsNestedInput
   }
 
   export type EducationUncheckedUpdateInput = {
@@ -5676,9 +5676,9 @@ export namespace Prisma {
     deleteMany?: EducationScalarWhereInput | EducationScalarWhereInput[]
   }
 
-  export type ResumeCreateNestedOneWithoutWorkExperienceInput = {
-    create?: XOR<ResumeCreateWithoutWorkExperienceInput, ResumeUncheckedCreateWithoutWorkExperienceInput>
-    connectOrCreate?: ResumeCreateOrConnectWithoutWorkExperienceInput
+  export type ResumeCreateNestedOneWithoutWorkExperiencesInput = {
+    create?: XOR<ResumeCreateWithoutWorkExperiencesInput, ResumeUncheckedCreateWithoutWorkExperiencesInput>
+    connectOrCreate?: ResumeCreateOrConnectWithoutWorkExperiencesInput
     connect?: ResumeWhereUniqueInput
   }
 
@@ -5686,26 +5686,26 @@ export namespace Prisma {
     set?: Date | string | null
   }
 
-  export type ResumeUpdateOneRequiredWithoutWorkExperienceNestedInput = {
-    create?: XOR<ResumeCreateWithoutWorkExperienceInput, ResumeUncheckedCreateWithoutWorkExperienceInput>
-    connectOrCreate?: ResumeCreateOrConnectWithoutWorkExperienceInput
-    upsert?: ResumeUpsertWithoutWorkExperienceInput
+  export type ResumeUpdateOneRequiredWithoutWorkExperiencesNestedInput = {
+    create?: XOR<ResumeCreateWithoutWorkExperiencesInput, ResumeUncheckedCreateWithoutWorkExperiencesInput>
+    connectOrCreate?: ResumeCreateOrConnectWithoutWorkExperiencesInput
+    upsert?: ResumeUpsertWithoutWorkExperiencesInput
     connect?: ResumeWhereUniqueInput
-    update?: XOR<XOR<ResumeUpdateToOneWithWhereWithoutWorkExperienceInput, ResumeUpdateWithoutWorkExperienceInput>, ResumeUncheckedUpdateWithoutWorkExperienceInput>
+    update?: XOR<XOR<ResumeUpdateToOneWithWhereWithoutWorkExperiencesInput, ResumeUpdateWithoutWorkExperiencesInput>, ResumeUncheckedUpdateWithoutWorkExperiencesInput>
   }
 
-  export type ResumeCreateNestedOneWithoutEducationInput = {
-    create?: XOR<ResumeCreateWithoutEducationInput, ResumeUncheckedCreateWithoutEducationInput>
-    connectOrCreate?: ResumeCreateOrConnectWithoutEducationInput
+  export type ResumeCreateNestedOneWithoutEducationsInput = {
+    create?: XOR<ResumeCreateWithoutEducationsInput, ResumeUncheckedCreateWithoutEducationsInput>
+    connectOrCreate?: ResumeCreateOrConnectWithoutEducationsInput
     connect?: ResumeWhereUniqueInput
   }
 
-  export type ResumeUpdateOneRequiredWithoutEducationNestedInput = {
-    create?: XOR<ResumeCreateWithoutEducationInput, ResumeUncheckedCreateWithoutEducationInput>
-    connectOrCreate?: ResumeCreateOrConnectWithoutEducationInput
-    upsert?: ResumeUpsertWithoutEducationInput
+  export type ResumeUpdateOneRequiredWithoutEducationsNestedInput = {
+    create?: XOR<ResumeCreateWithoutEducationsInput, ResumeUncheckedCreateWithoutEducationsInput>
+    connectOrCreate?: ResumeCreateOrConnectWithoutEducationsInput
+    upsert?: ResumeUpsertWithoutEducationsInput
     connect?: ResumeWhereUniqueInput
-    update?: XOR<XOR<ResumeUpdateToOneWithWhereWithoutEducationInput, ResumeUpdateWithoutEducationInput>, ResumeUncheckedUpdateWithoutEducationInput>
+    update?: XOR<XOR<ResumeUpdateToOneWithWhereWithoutEducationsInput, ResumeUpdateWithoutEducationsInput>, ResumeUncheckedUpdateWithoutEducationsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -5965,7 +5965,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Education"> | Date | string
   }
 
-  export type ResumeCreateWithoutWorkExperienceInput = {
+  export type ResumeCreateWithoutWorkExperiencesInput = {
     id?: string
     userId: string
     title?: string | null
@@ -5984,10 +5984,10 @@ export namespace Prisma {
     skills?: ResumeCreateskillsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    Education?: EducationCreateNestedManyWithoutResumeInput
+    educations?: EducationCreateNestedManyWithoutResumeInput
   }
 
-  export type ResumeUncheckedCreateWithoutWorkExperienceInput = {
+  export type ResumeUncheckedCreateWithoutWorkExperiencesInput = {
     id?: string
     userId: string
     title?: string | null
@@ -6006,26 +6006,26 @@ export namespace Prisma {
     skills?: ResumeCreateskillsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    Education?: EducationUncheckedCreateNestedManyWithoutResumeInput
+    educations?: EducationUncheckedCreateNestedManyWithoutResumeInput
   }
 
-  export type ResumeCreateOrConnectWithoutWorkExperienceInput = {
+  export type ResumeCreateOrConnectWithoutWorkExperiencesInput = {
     where: ResumeWhereUniqueInput
-    create: XOR<ResumeCreateWithoutWorkExperienceInput, ResumeUncheckedCreateWithoutWorkExperienceInput>
+    create: XOR<ResumeCreateWithoutWorkExperiencesInput, ResumeUncheckedCreateWithoutWorkExperiencesInput>
   }
 
-  export type ResumeUpsertWithoutWorkExperienceInput = {
-    update: XOR<ResumeUpdateWithoutWorkExperienceInput, ResumeUncheckedUpdateWithoutWorkExperienceInput>
-    create: XOR<ResumeCreateWithoutWorkExperienceInput, ResumeUncheckedCreateWithoutWorkExperienceInput>
+  export type ResumeUpsertWithoutWorkExperiencesInput = {
+    update: XOR<ResumeUpdateWithoutWorkExperiencesInput, ResumeUncheckedUpdateWithoutWorkExperiencesInput>
+    create: XOR<ResumeCreateWithoutWorkExperiencesInput, ResumeUncheckedCreateWithoutWorkExperiencesInput>
     where?: ResumeWhereInput
   }
 
-  export type ResumeUpdateToOneWithWhereWithoutWorkExperienceInput = {
+  export type ResumeUpdateToOneWithWhereWithoutWorkExperiencesInput = {
     where?: ResumeWhereInput
-    data: XOR<ResumeUpdateWithoutWorkExperienceInput, ResumeUncheckedUpdateWithoutWorkExperienceInput>
+    data: XOR<ResumeUpdateWithoutWorkExperiencesInput, ResumeUncheckedUpdateWithoutWorkExperiencesInput>
   }
 
-  export type ResumeUpdateWithoutWorkExperienceInput = {
+  export type ResumeUpdateWithoutWorkExperiencesInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6044,10 +6044,10 @@ export namespace Prisma {
     skills?: ResumeUpdateskillsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Education?: EducationUpdateManyWithoutResumeNestedInput
+    educations?: EducationUpdateManyWithoutResumeNestedInput
   }
 
-  export type ResumeUncheckedUpdateWithoutWorkExperienceInput = {
+  export type ResumeUncheckedUpdateWithoutWorkExperiencesInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6066,10 +6066,10 @@ export namespace Prisma {
     skills?: ResumeUpdateskillsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    Education?: EducationUncheckedUpdateManyWithoutResumeNestedInput
+    educations?: EducationUncheckedUpdateManyWithoutResumeNestedInput
   }
 
-  export type ResumeCreateWithoutEducationInput = {
+  export type ResumeCreateWithoutEducationsInput = {
     id?: string
     userId: string
     title?: string | null
@@ -6088,10 +6088,10 @@ export namespace Prisma {
     skills?: ResumeCreateskillsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    WorkExperience?: WorkExperienceCreateNestedManyWithoutResumeInput
+    workExperiences?: WorkExperienceCreateNestedManyWithoutResumeInput
   }
 
-  export type ResumeUncheckedCreateWithoutEducationInput = {
+  export type ResumeUncheckedCreateWithoutEducationsInput = {
     id?: string
     userId: string
     title?: string | null
@@ -6110,26 +6110,26 @@ export namespace Prisma {
     skills?: ResumeCreateskillsInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    WorkExperience?: WorkExperienceUncheckedCreateNestedManyWithoutResumeInput
+    workExperiences?: WorkExperienceUncheckedCreateNestedManyWithoutResumeInput
   }
 
-  export type ResumeCreateOrConnectWithoutEducationInput = {
+  export type ResumeCreateOrConnectWithoutEducationsInput = {
     where: ResumeWhereUniqueInput
-    create: XOR<ResumeCreateWithoutEducationInput, ResumeUncheckedCreateWithoutEducationInput>
+    create: XOR<ResumeCreateWithoutEducationsInput, ResumeUncheckedCreateWithoutEducationsInput>
   }
 
-  export type ResumeUpsertWithoutEducationInput = {
-    update: XOR<ResumeUpdateWithoutEducationInput, ResumeUncheckedUpdateWithoutEducationInput>
-    create: XOR<ResumeCreateWithoutEducationInput, ResumeUncheckedCreateWithoutEducationInput>
+  export type ResumeUpsertWithoutEducationsInput = {
+    update: XOR<ResumeUpdateWithoutEducationsInput, ResumeUncheckedUpdateWithoutEducationsInput>
+    create: XOR<ResumeCreateWithoutEducationsInput, ResumeUncheckedCreateWithoutEducationsInput>
     where?: ResumeWhereInput
   }
 
-  export type ResumeUpdateToOneWithWhereWithoutEducationInput = {
+  export type ResumeUpdateToOneWithWhereWithoutEducationsInput = {
     where?: ResumeWhereInput
-    data: XOR<ResumeUpdateWithoutEducationInput, ResumeUncheckedUpdateWithoutEducationInput>
+    data: XOR<ResumeUpdateWithoutEducationsInput, ResumeUncheckedUpdateWithoutEducationsInput>
   }
 
-  export type ResumeUpdateWithoutEducationInput = {
+  export type ResumeUpdateWithoutEducationsInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6148,10 +6148,10 @@ export namespace Prisma {
     skills?: ResumeUpdateskillsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    WorkExperience?: WorkExperienceUpdateManyWithoutResumeNestedInput
+    workExperiences?: WorkExperienceUpdateManyWithoutResumeNestedInput
   }
 
-  export type ResumeUncheckedUpdateWithoutEducationInput = {
+  export type ResumeUncheckedUpdateWithoutEducationsInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6170,7 +6170,7 @@ export namespace Prisma {
     skills?: ResumeUpdateskillsInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    WorkExperience?: WorkExperienceUncheckedUpdateManyWithoutResumeNestedInput
+    workExperiences?: WorkExperienceUncheckedUpdateManyWithoutResumeNestedInput
   }
 
   export type WorkExperienceCreateManyResumeInput = {

@@ -1,5 +1,3 @@
-import { ResumeValues } from "@/schemas/resume-values.schema"
-
 import { ResumeFormProps } from "@/lib/types"
 import { cn } from "@/lib/utils"
 
