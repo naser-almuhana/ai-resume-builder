@@ -95,7 +95,7 @@ const ResponsiveModalFooter = ({
 }: React.ComponentProps<"div">) => (
   <div
     className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2",
+      "mt-2 flex flex-col space-y-2 sm:mt-0 sm:flex-row sm:justify-end sm:space-y-0 sm:space-x-2",
       className,
     )}
     {...props}

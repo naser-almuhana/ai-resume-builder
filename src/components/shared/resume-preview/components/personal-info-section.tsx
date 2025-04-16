@@ -39,7 +39,7 @@ export function PersonalInfoSection({ resumeData }: ResumeSectionProps) {
           alt="Author photo"
           className="aspect-square object-cover"
           style={{
-            boxShadow: `0 0 0 2px white, 0 0 0 4px ${colorHex}`,
+            // boxShadow: `0 0 0 2px white, 0 0 0 4px ${colorHex}`,
             borderRadius:
               borderStyle === BORDER_STYLES.SQUARE
                 ? "0px"

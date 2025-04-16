@@ -18,12 +18,10 @@ export const metadata: Metadata = {
 }
 
 export default async function EditorPage({ searchParams }: EditorPageProps) {
-  const [{ resumeId }, { userId }] = await Promise.all([searchParams, auth()])
-
-  // const { resumeId } = await searchParams
-  // const { userId } = await auth()
-
+  const { userId } = await auth()
   if (!userId) return null
+
+  const { resumeId } = await searchParams
 
   const resumeToEdit = resumeId
     ? await prisma.resume.findUnique({

@@ -17,9 +17,9 @@ interface AppResponsiveModalProps extends PropsWithChildren {
   /** Callback for controlled open state changes */
   onOpenChange?: (open: boolean) => void
   /** Modal title */
-  title?: string
+  title?: ReactNode
   /** Modal description */
-  description?: string
+  description?: ReactNode
   /** Trigger element that opens the modal (uncontrolled) */
   trigger?: ReactNode
   /** Additional class names for content */
