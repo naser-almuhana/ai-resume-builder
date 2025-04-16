@@ -24,6 +24,8 @@ import {
   summarySchema,
 } from "@/features/editor/schemas/summary.schema"
 
+import { GenerateSummaryButton } from "./components/generate-summary-button"
+
 export function SummaryForm({ resumeData, setResumeData }: ResumeFormProps) {
   const form = useForm<SummaryValues>({
     resolver: zodResolver(summarySchema),
@@ -59,14 +61,12 @@ export function SummaryForm({ resumeData, setResumeData }: ResumeFormProps) {
                   />
                 </FormControl>
                 <FormMessage />
-                {/* <GenerateSummaryButton
-                  resumeData={resumeData}
-                  onSummaryGenerated={(summary) =>
-                    form.setValue("summary", summary)
-                  }
-                /> */}
               </FormItem>
             )}
+          />
+          <GenerateSummaryButton
+            resumeData={resumeData}
+            onSummaryGenerated={(summary) => form.setValue("summary", summary)}
           />
         </form>
       </Form>

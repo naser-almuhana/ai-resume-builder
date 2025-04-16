@@ -16,8 +16,11 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 
 import { type EducationValues } from "@/features/editor/schemas/education.schema"
+
+import { GenerateEducationButton } from "./generate-education-button"
 
 interface EducationItemProps {
   id: string
@@ -58,6 +61,13 @@ export function EducationItem({ id, form, index, remove }: EducationItemProps) {
           )}
           {...attributes}
           {...listeners}
+        />
+      </div>
+      <div className="flex justify-center">
+        <GenerateEducationButton
+          onEducationGenerated={(edu) =>
+            form.setValue(`educations.${index}`, edu)
+          }
         />
       </div>
 
@@ -123,6 +133,20 @@ export function EducationItem({ id, form, index, remove }: EducationItemProps) {
           )}
         />
       </div>
+
+      <FormField
+        control={form.control}
+        name={`educations.${index}.description`}
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Description</FormLabel>
+            <FormControl>
+              <Textarea {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
       <Button variant="destructive" type="button" onClick={() => remove(index)}>
         Remove
       </Button>

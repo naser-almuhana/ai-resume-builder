@@ -47,6 +47,7 @@ export function EducationSection({ resumeData }: ResumeSectionProps) {
               )}
             </div>
             <p className="text-xs font-semibold">{edu.school}</p>
+            <div className="text-xs whitespace-pre-line">{edu.description}</div>
           </div>
         ))}
       </div>

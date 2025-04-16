@@ -17,3 +17,7 @@ export const workExperienceSchema = z.object({
 })
 
 export type WorkExperienceValues = z.infer<typeof workExperienceSchema>
+
+export type WorkExperience = NonNullable<
+  z.infer<typeof workExperienceSchema>["workExperiences"]
+>[number]

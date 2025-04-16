@@ -156,6 +156,7 @@ exports.Prisma.EducationScalarFieldEnum = {
   school: 'school',
   startDate: 'startDate',
   endDate: 'endDate',
+  description: 'description',
   resumeId: 'resumeId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

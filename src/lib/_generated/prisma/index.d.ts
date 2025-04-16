@@ -3483,6 +3483,7 @@ export namespace Prisma {
     school: string | null
     startDate: Date | null
     endDate: Date | null
+    description: string | null
     resumeId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3494,6 +3495,7 @@ export namespace Prisma {
     school: string | null
     startDate: Date | null
     endDate: Date | null
+    description: string | null
     resumeId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -3505,6 +3507,7 @@ export namespace Prisma {
     school: number
     startDate: number
     endDate: number
+    description: number
     resumeId: number
     createdAt: number
     updatedAt: number
@@ -3518,6 +3521,7 @@ export namespace Prisma {
     school?: true
     startDate?: true
     endDate?: true
+    description?: true
     resumeId?: true
     createdAt?: true
     updatedAt?: true
@@ -3529,6 +3533,7 @@ export namespace Prisma {
     school?: true
     startDate?: true
     endDate?: true
+    description?: true
     resumeId?: true
     createdAt?: true
     updatedAt?: true
@@ -3540,6 +3545,7 @@ export namespace Prisma {
     school?: true
     startDate?: true
     endDate?: true
+    description?: true
     resumeId?: true
     createdAt?: true
     updatedAt?: true
@@ -3624,6 +3630,7 @@ export namespace Prisma {
     school: string | null
     startDate: Date | null
     endDate: Date | null
+    description: string | null
     resumeId: string
     createdAt: Date
     updatedAt: Date
@@ -3652,6 +3659,7 @@ export namespace Prisma {
     school?: boolean
     startDate?: boolean
     endDate?: boolean
+    description?: boolean
     resumeId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -3664,6 +3672,7 @@ export namespace Prisma {
     school?: boolean
     startDate?: boolean
     endDate?: boolean
+    description?: boolean
     resumeId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -3676,6 +3685,7 @@ export namespace Prisma {
     school?: boolean
     startDate?: boolean
     endDate?: boolean
+    description?: boolean
     resumeId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -3688,12 +3698,13 @@ export namespace Prisma {
     school?: boolean
     startDate?: boolean
     endDate?: boolean
+    description?: boolean
     resumeId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type EducationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "degree" | "school" | "startDate" | "endDate" | "resumeId" | "createdAt" | "updatedAt", ExtArgs["result"]["education"]>
+  export type EducationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "degree" | "school" | "startDate" | "endDate" | "description" | "resumeId" | "createdAt" | "updatedAt", ExtArgs["result"]["education"]>
   export type EducationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     resume?: boolean | ResumeDefaultArgs<ExtArgs>
   }
@@ -3715,6 +3726,7 @@ export namespace Prisma {
       school: string | null
       startDate: Date | null
       endDate: Date | null
+      description: string | null
       resumeId: string
       createdAt: Date
       updatedAt: Date
@@ -4147,6 +4159,7 @@ export namespace Prisma {
     readonly school: FieldRef<"Education", 'String'>
     readonly startDate: FieldRef<"Education", 'DateTime'>
     readonly endDate: FieldRef<"Education", 'DateTime'>
+    readonly description: FieldRef<"Education", 'String'>
     readonly resumeId: FieldRef<"Education", 'String'>
     readonly createdAt: FieldRef<"Education", 'DateTime'>
     readonly updatedAt: FieldRef<"Education", 'DateTime'>
@@ -4623,6 +4636,7 @@ export namespace Prisma {
     school: 'school',
     startDate: 'startDate',
     endDate: 'endDate',
+    description: 'description',
     resumeId: 'resumeId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -4912,6 +4926,7 @@ export namespace Prisma {
     school?: StringNullableFilter<"Education"> | string | null
     startDate?: DateTimeNullableFilter<"Education"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Education"> | Date | string | null
+    description?: StringNullableFilter<"Education"> | string | null
     resumeId?: StringFilter<"Education"> | string
     createdAt?: DateTimeFilter<"Education"> | Date | string
     updatedAt?: DateTimeFilter<"Education"> | Date | string
@@ -4924,6 +4939,7 @@ export namespace Prisma {
     school?: SortOrderInput | SortOrder
     startDate?: SortOrderInput | SortOrder
     endDate?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     resumeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -4939,6 +4955,7 @@ export namespace Prisma {
     school?: StringNullableFilter<"Education"> | string | null
     startDate?: DateTimeNullableFilter<"Education"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Education"> | Date | string | null
+    description?: StringNullableFilter<"Education"> | string | null
     resumeId?: StringFilter<"Education"> | string
     createdAt?: DateTimeFilter<"Education"> | Date | string
     updatedAt?: DateTimeFilter<"Education"> | Date | string
@@ -4951,6 +4968,7 @@ export namespace Prisma {
     school?: SortOrderInput | SortOrder
     startDate?: SortOrderInput | SortOrder
     endDate?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     resumeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -4968,6 +4986,7 @@ export namespace Prisma {
     school?: StringNullableWithAggregatesFilter<"Education"> | string | null
     startDate?: DateTimeNullableWithAggregatesFilter<"Education"> | Date | string | null
     endDate?: DateTimeNullableWithAggregatesFilter<"Education"> | Date | string | null
+    description?: StringNullableWithAggregatesFilter<"Education"> | string | null
     resumeId?: StringWithAggregatesFilter<"Education"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Education"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Education"> | Date | string
@@ -5217,6 +5236,7 @@ export namespace Prisma {
     school?: string | null
     startDate?: Date | string | null
     endDate?: Date | string | null
+    description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     resume: ResumeCreateNestedOneWithoutEducationsInput
@@ -5228,6 +5248,7 @@ export namespace Prisma {
     school?: string | null
     startDate?: Date | string | null
     endDate?: Date | string | null
+    description?: string | null
     resumeId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5239,6 +5260,7 @@ export namespace Prisma {
     school?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     resume?: ResumeUpdateOneRequiredWithoutEducationsNestedInput
@@ -5250,6 +5272,7 @@ export namespace Prisma {
     school?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     resumeId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5261,6 +5284,7 @@ export namespace Prisma {
     school?: string | null
     startDate?: Date | string | null
     endDate?: Date | string | null
+    description?: string | null
     resumeId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5272,6 +5296,7 @@ export namespace Prisma {
     school?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5282,6 +5307,7 @@ export namespace Prisma {
     school?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     resumeId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5544,6 +5570,7 @@ export namespace Prisma {
     school?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    description?: SortOrder
     resumeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -5555,6 +5582,7 @@ export namespace Prisma {
     school?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    description?: SortOrder
     resumeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -5566,6 +5594,7 @@ export namespace Prisma {
     school?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
+    description?: SortOrder
     resumeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -5880,6 +5909,7 @@ export namespace Prisma {
     school?: string | null
     startDate?: Date | string | null
     endDate?: Date | string | null
+    description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5890,6 +5920,7 @@ export namespace Prisma {
     school?: string | null
     startDate?: Date | string | null
     endDate?: Date | string | null
+    description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -5960,6 +5991,7 @@ export namespace Prisma {
     school?: StringNullableFilter<"Education"> | string | null
     startDate?: DateTimeNullableFilter<"Education"> | Date | string | null
     endDate?: DateTimeNullableFilter<"Education"> | Date | string | null
+    description?: StringNullableFilter<"Education"> | string | null
     resumeId?: StringFilter<"Education"> | string
     createdAt?: DateTimeFilter<"Education"> | Date | string
     updatedAt?: DateTimeFilter<"Education"> | Date | string
@@ -6190,6 +6222,7 @@ export namespace Prisma {
     school?: string | null
     startDate?: Date | string | null
     endDate?: Date | string | null
+    description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6233,6 +6266,7 @@ export namespace Prisma {
     school?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6243,6 +6277,7 @@ export namespace Prisma {
     school?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6253,6 +6288,7 @@ export namespace Prisma {
     school?: NullableStringFieldUpdateOperationsInput | string | null
     startDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

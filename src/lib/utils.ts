@@ -32,7 +32,6 @@ export function fileReplacer(key: unknown, value: unknown) {
 }
 
 export function mapToResumeValues(data: ResumeServerData): ResumeValues {
-  console.log({ data })
   return {
     id: data.id,
     title: data.title || undefined,
@@ -57,6 +56,7 @@ export function mapToResumeValues(data: ResumeServerData): ResumeValues {
       school: edu.school || undefined,
       startDate: edu.startDate?.toISOString().split("T")[0],
       endDate: edu.endDate?.toISOString().split("T")[0],
+      description: edu.description || undefined,
     })),
     skills: data.skills,
     borderStyle: data.borderStyle,

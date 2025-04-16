@@ -21,6 +21,8 @@ import { Textarea } from "@/components/ui/textarea"
 
 import { type WorkExperienceValues } from "@/features/editor/schemas/work-experience.schema"
 
+import { GenerateWorkExperienceButton } from "./generate-work-experience-button"
+
 interface WorkExperienceItemProps {
   id: string
   form: UseFormReturn<WorkExperienceValues>
@@ -67,7 +69,13 @@ export function WorkExperienceItem({
           {...listeners}
         />
       </div>
-
+      <div className="flex justify-center">
+        <GenerateWorkExperienceButton
+          onWorkExperienceGenerated={(exp) =>
+            form.setValue(`workExperiences.${index}`, exp)
+          }
+        />
+      </div>
       <FormField
         control={form.control}
         name={`workExperiences.${index}.position`}

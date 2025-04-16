@@ -10,9 +10,14 @@ export const educationSchema = z.object({
         school: optionalString,
         startDate: optionalString,
         endDate: optionalString,
+        description: optionalString,
       }),
     )
     .optional(),
 })
 
 export type EducationValues = z.infer<typeof educationSchema>
+
+export type Education = NonNullable<
+  z.infer<typeof educationSchema>["educations"]
+>[number]
