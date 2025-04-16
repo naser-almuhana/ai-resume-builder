@@ -196,11 +196,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://ai-resume-builder-db_owner:npg_KEuoZh47TMAr@ep-mute-meadow-a2mhfodj-pooler.eu-central-1.aws.neon.tech/ai-resume-builder-db?sslmode=require"
+        "value": null
       }
     }
   },
