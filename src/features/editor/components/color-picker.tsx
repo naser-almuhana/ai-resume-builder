@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 
+import { useSubscriptionLevel } from "@/providers/subscription-level-provider"
 import { PaletteIcon } from "lucide-react"
 import { Color, ColorChangeHandler, TwitterPicker } from "react-color"
 
@@ -12,6 +13,9 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
+import { usePremiumModal } from "@/features/premium/hooks/use-premium-modal"
+import { canUseCustomizations } from "@/features/premium/lib/permissions"
+
 interface ColorPickerProps {
   color?: Color
   onChange: ColorChangeHandler
@@ -19,6 +23,9 @@ interface ColorPickerProps {
 
 export function ColorPicker({ color, onChange }: ColorPickerProps) {
   const [showPopover, setShowPopover] = useState(false)
+  const subscriptionLevel = useSubscriptionLevel()
+  const premiumModal = usePremiumModal()
+
   return (
     <Popover open={showPopover} onOpenChange={setShowPopover}>
       <PopoverTrigger asChild>
@@ -28,10 +35,10 @@ export function ColorPicker({ color, onChange }: ColorPickerProps) {
           className="max-2xl:dark:bg-muted max-2xl:dark:hover:bg-muted/80"
           title="Change resume color"
           onClick={() => {
-            // if (!canUseCustomizations(subscriptionLevel)) {
-            //   premiumModal.setOpen(true)
-            //   return
-            // }
+            if (!canUseCustomizations(subscriptionLevel)) {
+              premiumModal.setOpen(true)
+              return
+            }
             setShowPopover(true)
           }}
         >

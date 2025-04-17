@@ -162,6 +162,18 @@ exports.Prisma.EducationScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.UserSubscriptionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  stripeCustomerId: 'stripeCustomerId',
+  stripeSubscriptionId: 'stripeSubscriptionId',
+  stripePriceId: 'stripePriceId',
+  stripeCurrentPeriodEnd: 'stripeCurrentPeriodEnd',
+  stripeCancelAtPeriodEnd: 'stripeCancelAtPeriodEnd',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -181,7 +193,8 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   Resume: 'Resume',
   WorkExperience: 'WorkExperience',
-  Education: 'Education'
+  Education: 'Education',
+  UserSubscription: 'UserSubscription'
 };
 
 /**

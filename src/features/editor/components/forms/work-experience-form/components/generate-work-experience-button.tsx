@@ -1,7 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useTransition } from "react"
 
+import { useSubscriptionLevel } from "@/providers/subscription-level-provider"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { WandSparklesIcon } from "lucide-react"
 import { useForm } from "react-hook-form"
@@ -30,6 +31,8 @@ import {
   generateWorkExperienceSchema,
 } from "@/features/editor/schemas/generate-work-experience.schema"
 import { WorkExperience } from "@/features/editor/schemas/work-experience.schema"
+import { usePremiumModal } from "@/features/premium/hooks/use-premium-modal"
+import { canUseAITools } from "@/features/premium/lib/permissions"
 
 interface GenerateWorkExperienceButtonProps {
   onWorkExperienceGenerated: (workExperience: WorkExperience) => void
@@ -38,7 +41,11 @@ interface GenerateWorkExperienceButtonProps {
 export function GenerateWorkExperienceButton({
   onWorkExperienceGenerated,
 }: GenerateWorkExperienceButtonProps) {
-  const [open, setOpen] = useState(false)
+  const [OpenGenerateModal, setOpenGenerateModal] = useState(false)
+  const [isPending, startTransition] = useTransition()
+
+  const subscriptionLevel = useSubscriptionLevel()
+  const premiumModal = usePremiumModal()
 
   const form = useForm<GenerateWorkExperienceInput>({
     resolver: zodResolver(generateWorkExperienceSchema),
@@ -47,67 +54,68 @@ export function GenerateWorkExperienceButton({
     },
   })
 
-  async function onSubmit(input: GenerateWorkExperienceInput) {
-    try {
-      const response = await generateWorkExperience(input)
-      onWorkExperienceGenerated(response)
-    } catch (error) {
-      console.error(error)
-      toast.error("Something went wrong. Please try again.")
-    } finally {
-      setOpen(false)
+  function onSubmit(input: GenerateWorkExperienceInput) {
+    startTransition(async () => {
+      try {
+        const response = await generateWorkExperience(input)
+        onWorkExperienceGenerated(response)
+      } catch (error) {
+        console.error("GenerateWorkExperienceButton", error)
+        toast.error("Something went wrong. Please try again.")
+      } finally {
+        setOpenGenerateModal(false)
+      }
+    })
+  }
+
+  // Handle open logic outside of the trigger
+  const handleClick = () => {
+    if (!canUseAITools(subscriptionLevel)) {
+      premiumModal.setOpen(true)
+    } else {
+      setOpenGenerateModal(true)
     }
   }
 
-  const Trigger = (
-    <Button
-      variant="outline"
-      type="button"
-      onClick={() => {
-        // if (!canUseAITools(subscriptionLevel)) {
-        //   premiumModal.setOpen(true)
-        //   return
-        // }
-      }}
-    >
-      <WandSparklesIcon className="size-4" />
-      Smart fill (AI)
-    </Button>
-  )
   return (
-    <AppResponsiveModal
-      open={open}
-      onOpenChange={setOpen}
-      title={GENERATE_WORK_EXPERIENCE_FORM_TITLE}
-      description={GENERATE_WORK_EXPERIENCE_FORM_DESCRIPTION}
-      trigger={Trigger}
-      contentClassName="space-y-6"
-    >
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
-          <FormField
-            control={form.control}
-            name="description"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Description</FormLabel>
-                <FormControl>
-                  <Textarea
-                    {...field}
-                    placeholder={`E.g. "from nov 2019 to dec 2020 I worked at google as a software engineer, my tasks were: ..."`}
-                    className="placeholder:text-sm"
-                    autoFocus
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <LoadingButton type="submit" loading={form.formState.isSubmitting}>
-            Generate
-          </LoadingButton>
-        </form>
-      </Form>
-    </AppResponsiveModal>
+    <>
+      <Button variant="outline" type="button" onClick={handleClick}>
+        <WandSparklesIcon className="size-4" />
+        Smart fill (AI)
+      </Button>
+      <AppResponsiveModal
+        open={OpenGenerateModal}
+        onOpenChange={setOpenGenerateModal}
+        title={GENERATE_WORK_EXPERIENCE_FORM_TITLE}
+        description={GENERATE_WORK_EXPERIENCE_FORM_DESCRIPTION}
+        contentClassName="space-y-6"
+      >
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+            <FormField
+              control={form.control}
+              name="description"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Description</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      {...field}
+                      placeholder={`E.g. "from nov 2019 to dec 2020 I worked at google as a software engineer, my tasks were: ..."`}
+                      className="placeholder:text-sm"
+                      autoFocus
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <LoadingButton type="submit" loading={isPending}>
+              {isPending ? "Generating..." : "Generate (AI)"}
+            </LoadingButton>
+          </form>
+        </Form>
+      </AppResponsiveModal>
+    </>
   )
 }

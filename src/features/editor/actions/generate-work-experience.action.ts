@@ -9,12 +9,18 @@ import {
   generateWorkExperienceSchema,
 } from "@/features/editor/schemas/generate-work-experience.schema"
 import { type WorkExperience } from "@/features/editor/schemas/work-experience.schema"
+import { getUserSubscriptionLevel } from "@/features/premium/data/get-user-subscription-level"
+import { canUseAITools } from "@/features/premium/lib/permissions"
 
 export async function generateWorkExperience(
   input: GenerateWorkExperienceInput,
 ) {
   const { userId } = await auth()
   if (!userId) throw new Error("Unauthorized")
+
+  const subscriptionLevel = await getUserSubscriptionLevel(userId)
+  if (!canUseAITools(subscriptionLevel))
+    throw new Error("Upgrade your subscription to use this feature")
 
   const { description } = generateWorkExperienceSchema.parse(input)
 

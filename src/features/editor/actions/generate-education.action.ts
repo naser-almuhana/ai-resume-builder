@@ -9,10 +9,16 @@ import {
   type GenerateEducationInput,
   generateEducationSchema,
 } from "@/features/editor/schemas/generate-education.schema"
+import { getUserSubscriptionLevel } from "@/features/premium/data/get-user-subscription-level"
+import { canUseAITools } from "@/features/premium/lib/permissions"
 
 export async function generateEducation(input: GenerateEducationInput) {
   const { userId } = await auth()
   if (!userId) throw new Error("Unauthorized")
+
+  const subscriptionLevel = await getUserSubscriptionLevel(userId)
+  if (!canUseAITools(subscriptionLevel))
+    throw new Error("Upgrade your subscription to use this feature")
 
   const { description } = generateEducationSchema.parse(input)
 

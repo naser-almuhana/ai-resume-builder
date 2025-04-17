@@ -8,12 +8,18 @@ import {
   type GenerateSummaryInput,
   generateSummarySchema,
 } from "@/features/editor/schemas/generate-summary.schema"
+import { getUserSubscriptionLevel } from "@/features/premium/data/get-user-subscription-level"
+import { canUseAITools } from "@/features/premium/lib/permissions"
 
 export async function generateSummary(input: GenerateSummaryInput) {
   // TODO: block for non-premium users
 
   const { userId } = await auth()
   if (!userId) throw new Error("Unauthorized")
+
+  const subscriptionLevel = await getUserSubscriptionLevel(userId)
+  if (!canUseAITools(subscriptionLevel))
+    throw new Error("Upgrade your subscription to use this feature")
 
   const { jobTitle, workExperiences, educations, skills } =
     generateSummarySchema.parse(input)

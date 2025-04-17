@@ -1,10 +1,14 @@
 "use client"
 
+import { useSubscriptionLevel } from "@/providers/subscription-level-provider"
 import { CircleIcon, SquareIcon, SquircleIcon } from "lucide-react"
 
 import { BORDER_STYLES } from "@/constants"
 
 import { Button } from "@/components/ui/button"
+
+import { usePremiumModal } from "@/features/premium/hooks/use-premium-modal"
+import { canUseCustomizations } from "@/features/premium/lib/permissions"
 
 const borderStyles = Object.values(BORDER_STYLES)
 
@@ -17,11 +21,14 @@ export function BorderStyleButton({
   borderStyle,
   onChange,
 }: BorderStyleButtonProps) {
+  const premiumModal = usePremiumModal()
+  const subscriptionLevel = useSubscriptionLevel()
+
   function handleClick() {
-    // if (!canUseCustomizations(subscriptionLevel)) {
-    //   premiumModal.setOpen(true)
-    //   return
-    // }
+    if (!canUseCustomizations(subscriptionLevel)) {
+      premiumModal.setOpen(true)
+      return
+    }
 
     const currentIndex = borderStyle ? borderStyles.indexOf(borderStyle) : 0
     // Get the next index in the borderStyles array, wrapping around to 0 if at the end (used for cycling styles)
