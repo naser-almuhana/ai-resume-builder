@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 
-import { FileUserIcon, PenLineIcon } from "lucide-react"
+import { FileUserIcon, Loader2, PenLineIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -67,16 +67,22 @@ export function Footer({
           {showSmResumePreview ? <PenLineIcon /> : <FileUserIcon />}
         </Button>
         <div className="flex items-center gap-3">
-          <Button variant="secondary" asChild>
+          <Button
+            variant="secondary"
+            className={cn(isSaving && "pointer-events-none")}
+            asChild
+            disabled={isSaving}
+          >
             <Link href="/resumes">Close</Link>
           </Button>
           <p
             className={cn(
-              "text-muted-foreground opacity-0",
+              "text-muted-foreground flex items-center gap-1 opacity-0",
               isSaving && "opacity-100",
             )}
           >
-            Saving...
+            {isSaving && <Loader2 className="size-5 animate-spin" />}
+            Saving
           </p>
         </div>
       </div>

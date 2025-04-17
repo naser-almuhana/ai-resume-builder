@@ -50,7 +50,7 @@ export function MoreMenu({ resumeId, onPrintClick }: MoreMenuProps) {
           <Button
             variant="ghost"
             size="icon"
-            className="absolute top-0.5 right-0.5 opacity-0 transition-opacity group-hover:opacity-100"
+            className="absolute top-0.5 right-0.5 opacity-100 transition-opacity group-hover:opacity-100 md:opacity-0"
           >
             <MoreVerticalIcon className="size-4" />
           </Button>
