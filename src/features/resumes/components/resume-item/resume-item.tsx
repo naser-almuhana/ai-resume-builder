@@ -32,13 +32,15 @@ export function ResumeItem({ resume }: ResumeItemProps) {
       <div className="space-y-3">
         <Link
           href={`/editor?resumeId=${resume.id}`}
-          className="inline-block w-full text-center"
+          className="flex w-full flex-col gap-2 text-center"
         >
           <p className="line-clamp-1 font-semibold">
             {resume.title || "No title"}
           </p>
           {resume.description && (
-            <p className="line-clamp-2 text-sm">{resume.description}</p>
+            <p className="text-muted-foreground line-clamp-2 text-sm">
+              {resume.description}
+            </p>
           )}
           <p className="text-muted-foreground text-xs">
             {wasUpdated ? "Updated" : "Created"} on{" "}
