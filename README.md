@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Resume Builder
 
-## Getting Started
+The AI Resume Builder is a modern SaaS web app that simplifies resume creation using AI-powered generation. Built with **Next.js 15**, **React 19**, and **OpenAI**, it offers a seamless experience with smart features and real-time customization. Users can subscribe to different tiers and manage billing through **Stripe**.
 
-First, run the development server:
+## 🌟 Key Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### ✨ Core Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Feature                   | Description                                                                                         |
+| ------------------------- | --------------------------------------------------------------------------------------------------- |
+| **Real-time Saving**      | Automatic saving of changes                                                                         |
+| **Drag & Drop 🫳🫴**      | Easily reorder your education and work experience entries with intuitive drag & drop functionality. |
+| **Resume Export 🖨️**      | Print or download resumes.                                                                          |
+| **User Authentication🔐** | Secure user accounts with Clerk for login and sign up functionality.                                |
+| **Form Validation**       | Robust user input validation powered by **Zod**, ensuring accurate and structured data.             |
+| **Manage Subscription💲** | Upgrade, cancel, or resubscribe to a plan through the **Stripe** integration.                       |
+| **Theme System 🎨**       | ☀️Light - 🌚Dark                                                                                    |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🔐 SaaS Subscription
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Section           | Free   | Pro       | Pro Plus   |
+| ----------------- | ------ | --------- | ---------- |
+| **Max Resumes**   | 1      | 3         | Unlimited  |
+| **AI Generation** | ❌     | ✅        | ✅         |
+| **Customization** | ❌     | ❌        | ✅         |
+| **Price**         | **0$** | **9.99$** | **19.99$** |
 
-## Learn More
+### 🔐 AI Generation
 
-To learn more about Next.js, take a look at the following resources:
+| Section             | Description                                                                                                                          |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| **Work Experience** | Input a brief 20-character description, and the AI will generate a detailed work experience entry.                                   |
+| **Education**       | Provide a short 20-character summary, and the AI will create a comprehensive education section.                                      |
+| **Summary**         | The AI synthesizes your personal information, work experiences, education, and skills to generate a compelling professional summary. |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 🔐 Customization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Section                     | Description                                                        |
+| --------------------------- | ------------------------------------------------------------------ |
+| **Photo Styling**           | Customize the photo border (square, circle, semi-circle).          |
+| **Skill Badge Styling**     | Customize the appearance of skill badges, similar to photo styling |
+| **Primary Color Selection** | Change the primary color 🎨 of the resume.                         |
 
-## Deploy on Vercel
+### 🏗️ Technical Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Frontend**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Next.js 15 (App Router)
+- React 19 with Server Components
+- TailwindCSS v4
+- ShadCN UI
+- vercel/blob for media uploads
+- dnd-kit for drag & drop
+- zod
+
+**Backend**
+
+- Prisma ORM
+- PostgreSQL (NeonDB)
+- clerk for authentication
+- Server Actions
+- OpenAI
+- Stripe
+
+## License
+
+MIT License
+
+Copyright (c) [2025] [Naser Almuhana]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall
