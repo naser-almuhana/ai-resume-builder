@@ -2,7 +2,7 @@
 
 The AI Resume Builder is a modern SaaS web app that simplifies resume creation using AI-powered generation. Built with **Next.js 15**, **React 19**, and **OpenAI**, it offers a seamless experience with smart features and real-time customization. Users can subscribe to different tiers and manage billing through **Stripe**.
 
-<img src="/public/screen.png" alt="Next.js AI Resume Builder" />
+<img src="/public/screen.jpg" alt="Next.js AI Resume Builder" />
 
 ## 🌟 Key Features
 
