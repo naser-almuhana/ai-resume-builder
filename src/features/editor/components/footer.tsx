@@ -73,7 +73,7 @@ export function Footer({
             asChild
             disabled={isSaving}
           >
-            <Link href="/resumes">Close</Link>
+            <Link href="/resumes">{!nextStep ? "Finish" : "Close"}</Link>
           </Button>
           <p
             className={cn(
