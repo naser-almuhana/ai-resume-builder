@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { useEffect, useState } from "react"
 
 import type { ResumeSectionProps } from "@/lib/types"
@@ -73,7 +74,9 @@ export function PersonalInfoSection({ resumeData }: ResumeSectionProps) {
           {city && country ? ", " : ""}
           {country}
           {(city || country) && (phone || email) ? " • " : ""}
-          {[phone, email].filter(Boolean).join(" • ")}
+          {phone}
+          {phone || email ? " • " : ""}
+          <Link href={`mailto:${email}`}>{email}</Link>
         </p>
       </div>
     </div>
